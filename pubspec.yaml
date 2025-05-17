@@ -9,9 +9,3 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
-flutter:
-  plugin:
-    platforms:
-      android:
-      ios:
