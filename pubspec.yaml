@@ -1,0 +1,17 @@
+name: photo_view
+description: A simple package for displaying images with zooming capabilities.
+version: 0.150
+homepage: https://github.com/kiwijuse/Flutter_Photoview_Custom
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+      ios:
