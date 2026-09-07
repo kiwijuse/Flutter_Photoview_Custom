@@ -7,7 +7,7 @@
 
 | 파일 | 무엇을 |
 |---|---|
-| `lib/photo_view_gallery.dart` | 쓸어내려 닫기 · 확대 중 페이지 넘김 차단 · 전체화면 시스템 바 |
+| `lib/photo_view_gallery.dart` | 쓸어내려 닫기 · 확대 중 페이지 넘김 차단 |
 | `lib/src/core/photo_view_gesture_detector.dart` | 손가락 떨림에 죽던 더블탭 |
 
 나머지 13개 파일은 원본 그대로입니다.
@@ -100,29 +100,6 @@ ScrollPhysics _getScrollPhysics() {
 ```
 
 같은 `_isScaled` 값 하나가 세로 드래그 수용 여부 · 좌우 페이지 스크롤 · 위젯 트리 분기를 한꺼번에 가릅니다.
-
-## 4. 전체화면 시스템 바
-
-사진 뷰어는 배경이 검은데 시스템 내비게이션 바가 흰색으로 남아 있었습니다. 갤러리가 뜰 때 시스템 바를 검게 맞추고, 나갈 때 원래대로 되돌립니다.
-
-```dart
-static Future<void> setPhotoViewMode() async {
-  await SystemChrome.setEnabledSystemUIMode(
-    SystemUiMode.manual,
-    overlays: [SystemUiOverlay.bottom],
-  );
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle.light.copyWith(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.black,
-      systemNavigationBarIconBrightness: Brightness.light,
-    ),
-  );
-}
-```
-
-> [!NOTE]
-> `dispose()`의 복귀 호출이 `FirstsetMode;` 로 적혀 있어 실제로는 실행되지 않습니다. 쓰던 앱이 화면 쪽에서 따로 되돌리고 있어 증상은 없었지만, 고쳐야 할 자리입니다.
 
 ---
 
